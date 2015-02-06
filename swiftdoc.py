@@ -8,6 +8,7 @@ from jinja2 import Environment, FileSystemLoader
 import hashlib
 import click
 import sys
+import pkg_resources
 
 class PathlibPath(click.Path):
     def convert(self, value, param, ctx):
@@ -24,7 +25,7 @@ class Test(object):
 
 class SwiftDoc(object):
     def __init__(self):
-        self.templates_path = Path("templates")
+        self.templates_path = Path(pkg_resources.resource_filename(__name__, "templates"))
         assert self.templates_path.exists()
         self.env = Environment(
             loader=FileSystemLoader(str(self.templates_path)),

@@ -13,4 +13,9 @@ setup(
         [console_scripts]
         swiftdoc=swiftdoc:cli
     """,
+    package_data = {
+        "swiftdoc": [
+            "templates/*",
+        ],
+    },
 )

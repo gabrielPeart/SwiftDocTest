@@ -100,10 +100,12 @@ class SwiftDoc(object):
             sys.stderr.write("# Wrote \"{}\"\n".format(output_path.name))
 
 @click.command()
-@click.argument("input", type=PathlibPath(exists=True, file_okay=False, dir_okay=True, readable=True), default=".")
-@click.option("--output", type=PathlibPath(file_okay=False, dir_okay=True, writable=True), default="SwiftDocTests")
-@click.option("--imports", type=str, multiple=True)
+@click.argument("input", type=PathlibPath(exists=True, file_okay=False, dir_okay=True, readable=True), default=".", metavar="INPUT_DIR")
+@click.option("--output", type=PathlibPath(file_okay=False, dir_okay=True, writable=True), default="SwiftDocTests", metavar="OUTPUT_DIR", help="Output directory for unit test files.")
+@click.option("--imports", type=str, multiple=True, metavar="IMPORT", help="Imports to include in every Unit Test file.")
 def cli(input, output, imports):
+    """Produce unit test source files from correctly formatted Swift doc comments
+    """
     # print input
     # print output
     # print imports

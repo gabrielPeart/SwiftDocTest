@@ -1,2 +1,0 @@
-# SwiftDocTest
-DocTest for Swift

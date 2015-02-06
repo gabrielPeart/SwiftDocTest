@@ -4,9 +4,9 @@ DocTest for Swift
 
 Generates UnitTests from Swift doc comments.
 
-Very much inspired by https://docs.python.org/2/library/doctest.html
+Very much inspired by [Python's doctest module][https://docs.python.org/2/library/doctest.html]
 
-See NSHipster for information on Swift's doc-comment format: http://nshipster.com/swift-documentation/
+See [NSHipster][http://nshipster.com/swift-documentation/] for information on Swift's doc-comment format
 
 ## Why?
 
@@ -26,7 +26,7 @@ See: https://github.com/schwa/SwiftDocTest/issues/1
 
 ## Installation
 
-Use pip to install
+This is a python module so use pip to install. (You should be using virtual environments too. But if you don't know what that means just use sudo pip below).
 
 ```shell
     pip install git+https://github.com/schwa/SwiftDocTest.git

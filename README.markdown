@@ -4,6 +4,12 @@ DocTest for Swift
 
 Generates UnitTests from Swift doc comments
 
+## Warning!
+
+This code is super experimental. But I tbink the technique is very interesting and has a lot of potential. 
+
+See: https://github.com/schwa/SwiftDocTest/issues/1
+
 ## Installation
 
 Use pip to install

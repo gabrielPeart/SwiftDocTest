@@ -26,7 +26,7 @@ The disadvantages:
 
 ## Warning!
 
-This code is very much just a proof of concept. But I tbink the technique is very interesting and has a lot of potential. Much more work is needed to make it robust.
+This code is very much just a proof of concept. But I think the technique is very interesting and has a lot of potential. Much more work is needed to make it robust.
 
 If you like this idea but hate python - go away and rewrite this in whatever language you desire - but please take the concept further.
 

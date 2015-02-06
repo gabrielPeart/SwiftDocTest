@@ -6,7 +6,8 @@ setup(
     py_modules=["swiftdoc"],
     install_requires=[
         "Click",
-        "jinja2"
+        "jinja2",
+        "pathlib",
     ],
     entry_points="""
         [console_scripts]

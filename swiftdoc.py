@@ -7,6 +7,13 @@ import re
 from jinja2 import Environment, FileSystemLoader
 import hashlib
 import click
+import sys
+
+class PathlibPath(click.Path):
+    def convert(self, value, param, ctx):
+        result = super(PathlibPath, self).convert(value, param, ctx)
+        result = Path(result) if result else result
+        return result
 
 class Test(object):
     def __init__(self):
@@ -42,7 +49,6 @@ class SwiftDoc(object):
                 match = re.match(r"\s*:test:\s*(.+)", line)
                 if not match:
                     continue
-                print match
 
                 test = Test()
 
@@ -76,17 +82,21 @@ class SwiftDoc(object):
                 tests_dir.mkdir(parents=True)
 
             test_path = (tests_dir / name).with_suffix(".swift")
-            print test_path
 
             test_path.open("w").write(s)
 
+            sys.stderr.write("# Wrote \"{}\"\n".format(test_path.name))
+
 @click.command()
-@click.option("--input")
-@click.option("--output")
-@click.option("--imports")
+@click.argument("input", type=PathlibPath(exists=True, file_okay=False, dir_okay=True, readable=True), default=".")
+@click.option("--output", type=PathlibPath(file_okay=False, dir_okay=True, writable=True), default="SwiftDocTests")
+@click.option("--imports", type=str, multiple=True)
 def cli(input, output, imports):
+    # print input
+    # print output
+    # print imports
     tool = SwiftDoc()
-    tool.main(Path(input), Path(output), [imports])
+    tool.main(input, output, imports)
 
 if __name__ == '__main__':
     cli()

@@ -2,7 +2,21 @@
 
 DocTest for Swift
 
-Generates UnitTests from Swift doc comments
+Generates UnitTests from Swift doc comments.
+
+Very much inspired by https://docs.python.org/2/library/doctest.html
+
+See NSHipster for information on Swift's doc-comment format: http://nshipster.com/swift-documentation/
+
+## Why?
+
+Writing python doctests is extremely easy and incredibly fast. I wondered if I could bring something similar to swift.
+
+The advantages of doctests are:
+
+* Unit tests are right next to the code being tested. (This can help obviate the need for code coverage - which is good because swift has no code coverage tools yet).
+* Unit tests double as examples of how to use the API.
+* Doctests are extremely terse, with "room" for additional setup. This can help encourage smaller, more-atomic, easier to test code.
 
 ## Warning!
 
@@ -45,6 +59,8 @@ Run swiftdoc command line tool
 ```shell
 swiftdoc --output UnitTests --import FrameworkNameToImport .
 ```
+
+Import the generated code into your Unit Test targets.
 
 ## CLI Usage
 

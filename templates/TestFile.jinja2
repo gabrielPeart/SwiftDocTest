@@ -1,0 +1,13 @@
+import Cocoa
+import XCTest
+
+{% for import in imports %}
+import {{ import }}
+{% endfor %}
+
+class {{ name }}: XCTestCase {
+    {% for test in tests %}
+        {% include "TestFunction.jinja2" %}
+
+    {% endfor %}
+}

@@ -1,0 +1,8 @@
+    func test_{{ test.name }}() {
+{#        /*#}
+{#        {{ test.source }}#}
+{#        */#}
+        let result = {{ test.test }}
+        let expected_result = {{ test.result}}
+        XCTAssertEqual(result, expected_result)
+    }

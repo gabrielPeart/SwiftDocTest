@@ -35,6 +35,10 @@ class SwiftDoc(object):
             )
 
     def main(self, input_dir, output_dir, imports):
+
+        if not output_dir.exists():
+            output_dir.mkdir(parents=True)
+
         swift_files = []
         for dir, dirs, files in os.walk(str(input_dir)):
             dir = Path(dir)
@@ -43,6 +47,9 @@ class SwiftDoc(object):
 
         for path in swift_files:
             lines = path.open().readlines()
+
+            name = "{}SwiftDocTests".format(path.stem)
+            output_path = (output_dir / name).with_suffix(".swift")
 
             tests = []
 
@@ -72,21 +79,25 @@ class SwiftDoc(object):
             if not tests:
                 continue
 
-            name = "{}AutoDocTests".format(path.stem)
 
             template = self.env.get_template("TestFile.jinja2")
-            s = template.render(imports = imports, name = name, tests = tests)
 
-            tests_dir = output_dir
-            tests_dir = tests_dir / "AutoDocTests"
-            if not tests_dir.exists():
-                tests_dir.mkdir(parents=True)
+            d = dict(
+                imports = imports,
+                name = name,
+                tests = tests,
+                author = "SOMEONE", # TODO
+                created = "SOMEWHEN", # TODO
+                project_name = "SOMETHING",
+                copyright = "SOME STUFF",
+                filename = output_path.name,
+                )
+            s = template.render(**d)
 
-            test_path = (tests_dir / name).with_suffix(".swift")
 
-            test_path.open("w").write(s)
+            output_path.open("w").write(s)
 
-            sys.stderr.write("# Wrote \"{}\"\n".format(test_path.name))
+            sys.stderr.write("# Wrote \"{}\"\n".format(output_path.name))
 
 @click.command()
 @click.argument("input", type=PathlibPath(exists=True, file_okay=False, dir_okay=True, readable=True), default=".")

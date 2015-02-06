@@ -4,9 +4,9 @@ DocTest for Swift
 
 Generates UnitTests from Swift doc comments.
 
-Very much inspired by [Python's doctest module][https://docs.python.org/2/library/doctest.html]
+Very much inspired by [Python's doctest module](https://docs.python.org/2/library/doctest.html)
 
-See [NSHipster][http://nshipster.com/swift-documentation/] for information on Swift's doc-comment format
+See [NSHipster](http://nshipster.com/swift-documentation/) for information on Swift's doc-comment format
 
 ## Why?
 
